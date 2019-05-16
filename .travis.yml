@@ -6,6 +6,6 @@ before_install:
   - docker build -t paihari/docker-react-ci-aws -f Dockerfile.dev .
 
 script:
-  - docker run paihari/docker-react-ci-aws npm run test -- --coverage
+  - docker run -e CI=true paihari/docker-react-ci-aws npm run test -- --watchAll=false
 
 
