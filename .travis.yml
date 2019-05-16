@@ -8,4 +8,20 @@ before_install:
 script:
   - docker run -e CI=true paihari/docker-react-ci-aws npm run test -- --watchAll=false
 
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    name: "docker-react-ci-aws"
+    env: "DockerReactCiAws-env"
+    bucket_name: "elasticbeanstalk-us-east-1-898024814010"
+    bucket_path: "docker-react-ci-aws"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
+
+      
+
+
 
